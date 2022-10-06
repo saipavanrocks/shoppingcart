@@ -11,9 +11,81 @@
 
 
     </div>
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Product
+    </button>
+
+
+
     <button routerLink="cart" class="btn btn-primary">
         <i style="font-size: 30px;" class="fa fa-cart-plus"></i>
         <div style="font-size:10px;" class="badge bg-danger">{{totalitem}}</div>
     </button>
 </div>
+
+
 </header>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="productform">
+
+          <div class="input-group mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+          </div>
+
+          <div class="input-group mb-3">
+            <label class="form-label" for="description">Product description</label>
+            <textarea class="form-control" id="description" formControlName="description"></textarea>
+          </div>
+
+          <div class="input-group mb-3">
+            <label class="form-label" for="price">Price</label>
+            <input type="number" class="form-control" id="price" formControlName="price">
+          </div>
+
+            <!--image url-->
+            <div class="input-group mb-3">
+              <label for="profile" class="form-label">Profile Image url</label>
+              <input type="url" class="form-control" id="profile" formControlName="image">
+            </div>
+
+            <select class="form-select" aria-label="Default select example" formControlName="category">
+              <option selected>Please select the category</option>
+              <option value="electronics">Electronics</option>
+              <option value="jewelery">Jewelery</option>
+              <option value="women's clothing">Women</option>
+              <option value="men's clothing">Men</option>
+            </select>
+
+        </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addproduct()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
