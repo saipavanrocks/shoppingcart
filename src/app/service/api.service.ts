@@ -11,7 +11,7 @@ export class ApiService {
 
   getproducts(){
 
-    return this.api.get(" https://fakestoreapi.com/products/")
+    return this.api.get("https://angularbyprocademy-5761b-default-rtdb.firebaseio.com/products.json")
     .pipe(map((res:any)=>{
       return res
 
