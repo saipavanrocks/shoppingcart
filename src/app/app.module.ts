@@ -8,7 +8,9 @@ import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterpipePipe } from './Pipes/filterpipe.pipe'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SliderComponent } from './slider/slider.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     ProductsComponent,
     CartComponent,
-    FilterpipePipe
+    FilterpipePipe,
+    SliderComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
