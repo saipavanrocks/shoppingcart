@@ -24,8 +24,16 @@
               <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
               <td style="width: 25%;">{{item.description}}</td>
               <th style="width: 12%;">{{item.price}}</th>
-              <td style="width: 12%;">{{item.quantity}}</td>
-              <td style="width: 12%;">{{item.total}}</td>
+
+              <td style="width: 12%;">
+                <tr>
+                  <button type="button" (click)="incr(item)" class="btn btn-outline-primary"><i class="fa fa-plus"></i></button>&nbsp;
+                  <span>{{item.quantity}}</span>&nbsp;
+                  <button (click)="decr(item)" class="btn btn-outline-primary"><i class="fa fa-minus"></i></button>
+                </tr>
+              </td>
+
+              <td style="width: 12%;">{{item.total * item.quantity}}</td>
               <td>
                 <button (click)="deleteitem(item)" class="btn btn-danger">
                   <i class="fa fa-trash"></i>
