@@ -1,0 +1,41 @@
+
+<div class="mt-5 text-center">
+  <h1>{{loginmode?'Signin':'SignUp'}} Into UXTRENDZ</h1>
+</div>
+
+<div class="mt-5 mx-auto w-25">
+ <form [formGroup]="loginform" (ngSubmit)="onsubmit()">
+
+   <div class="form-group my-3 input-group">
+     <div class="input-group-prepend">
+       <span class="input-group-text">
+         <i class="fa fa-envelope"></i>
+       </span>
+
+     </div>
+     <input type="text" class="form-control" placeholder="Enter Username" formControlName="email">
+   </div>
+
+   <div class="form-group my-3 input-group">
+     <div class="input-group-prepend">
+       <span class="input-group-text" id="basic-addon1">
+         <i class="fa fa-lock"></i>
+       </span>
+     </div>
+     <input type="password" class="form-control" placeholder="Password" formControlName="password">
+   </div>
+
+   <div class="form-group mb-3 W-100">
+     <button type="submit" class="w-100 btn btn-outline-primary">{{loginmode?'Signin':'SignUp'}}</button>
+
+   </div>
+ </form>
+ <p class="mb-0">{{loginmode?'Dont have Account?':'Already have Account?'}}
+
+   <a (click)="onmodeswitch()" class="text-primary">{{loginmode?'create one':'Signin'}}</a>
+
+ </p>
+
+ <a href="">Forgot Password</a>
+</div>
+
