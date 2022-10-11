@@ -10,12 +10,15 @@ import { ApiService } from '../service/api.service';
 })
 export class HeaderComponent implements OnInit {
 
+  isloggedin = false;
+
   public searchkey="";
 
    productform!:FormGroup;
   constructor(private cartservice:CartServiceService, private fb:FormBuilder, private apiservice:ApiService) { }
   public totalitem:number = 0;
   ngOnInit(): void {
+
     this.cartservice.getproduct()
     .subscribe(res=>{
        this.totalitem = res.length;
@@ -30,6 +33,10 @@ export class HeaderComponent implements OnInit {
 
     })
 
+    this.apiservice.userdetails? true : false;
+    this.apiservice.loggedInEvent.subscribe((data)=>{
+      this.isloggedin = data;
+    })
 
   }
 

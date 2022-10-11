@@ -1,32 +1,49 @@
 <header>
-  <div class="navbar navbar-dark bg-primary shadow-sm px-3">
-    <div class="navbar-brand align-item-center d-flex">
-        <i  class="fa fa-truck" style="font-size: 40px;"></i>
-        <strong style="font-size: 30px; cursor: pointer;" routerLink="products">Flipkart</strong>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="navbar navbar-dark bg-primary shadow-sm px-3">
+        <div class="col-lg-6 col-md-8">
 
-        <div class="form-group">
-            <input type="text" class="form-control" [(ngModel)]="searchkey" (keyup)="searchtext($event)" placeholder="search products">
+          <div class="navbar-brand row">
+
+              <div class="col-lg-2 col-md-4">
+              <i  class="fa fa-truck" style="font-size: 40px;"></i>
+              <strong style="font-size: 30px; cursor: pointer;" routerLink="products">Flipkart</strong>
+              </div>
+
+              <div class="form-group col-lg-6 col-md-6 d-flex align-items-center">
+                  <input type="text" class="form-control" [(ngModel)]="searchkey" (keyup)="searchtext($event)" placeholder="search products">
+
+                  <span class="fa fa-search search-icon"></span>
+
+
+              </div>
+
+
+          </div>
+
         </div>
-        <span class="fa fa-search search-icon"></span>
 
+        <div class="col-lg-6 col-md-4">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Product
+          </button>
 
-    </div>
+          <button class="btn btn-secondary pl-2" routerLink="/login" *ngIf="!isloggedin">Login/Register</button>
 
+          <button class="btn btn-secondary pl-2" *ngIf="isloggedin">Logout</button>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add Product
-    </button>
+          <button routerLink="cart" class="btn btn-primary">
+              <i style="font-size: 30px;" class="fa fa-cart-plus"></i>
+              <div style="font-size:10px;" class="badge bg-danger">{{totalitem}}</div>
+          </button>
+        </div>
 
+      </div>
+  </div>
 
-
-    <button routerLink="cart" class="btn btn-primary">
-        <i style="font-size: 30px;" class="fa fa-cart-plus"></i>
-        <div style="font-size:10px;" class="badge bg-danger">{{totalitem}}</div>
-    </button>
-</div>
-
-
+  </div>
 </header>
 
 
