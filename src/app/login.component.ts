@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from '../service/api.service';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private authservice:ApiService, private route:Router) { }
 
   loginmode:boolean = true;
   loginform!:FormGroup;
@@ -27,24 +29,39 @@ export class LoginComponent implements OnInit {
   }
 
   onsubmit(){
-    // if(this.loginform.valid){
-    //   //console.log(this.loginform.value);
+    const email = this.loginform.value.email;
+    const pass = this.loginform.value.password;
 
-    //   const email = this.loginform.value.email;
-    //   const pass = this.loginform.value.password;
-
-    //   this.authservice.signup(email, pass).subscribe(res=>{
-    //     console.log(res)
-    //   },
-    //   err=>{
-    //     console.log(err);
-    //   })
+    if(this.loginform.valid && this.loginmode == false){
+      //console.log(this.loginform.value);
 
 
-    // }
-    // else{
-    //   //
-    // }
+
+      this.authservice.signup(email, pass).subscribe(res=>{
+        console.log(res)
+      },
+      err=>{
+        console.log(err);
+      })
+
+
+    }
+    else if(this.loginform.valid && this.loginmode == true){
+
+      this.authservice.signin(email, pass).subscribe((res)=>{
+
+        this.authservice.userdetails = res;
+        this.authservice.loggedInEvent.emit(true);
+
+        this.route.navigate(['products']);
+      })
+
+    }
+
+    this.loginform.reset();
+
+
+
 
   }
 
